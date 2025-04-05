@@ -10,7 +10,7 @@ st.set_page_config(page_title="Vendor Payment Delay Predictor", layout="centered
 # ---------- Load & Preprocess Data ----------
 @st.cache_data
 def load_data():
-    df = pd.read_csv('data/vendor_payments.csv', parse_dates=['Invoice_Date', 'Payment_Due_Date', 'Payment_Date'])
+    df = pd.read_csv('vendor_payments.csv', parse_dates=['Invoice_Date', 'Payment_Due_Date', 'Payment_Date'])
 
     # Rename 'Amount' to 'Invoice_Amount'
     if 'Amount' in df.columns:
@@ -43,7 +43,7 @@ st.title("📊 Vendor Payment Delay Predictor")
 st.markdown("Use this tool to predict whether a vendor payment will be delayed based on historical trends.")
 
 # Load for dropdown options
-raw_df = pd.read_csv('data/vendor_payments.csv')
+raw_df = pd.read_csv('vendor_payments.csv')
 payment_methods = sorted(raw_df['Payment_Method'].dropna().unique())
 departments = sorted(raw_df['Department'].dropna().unique())
 
